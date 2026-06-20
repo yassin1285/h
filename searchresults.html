@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Result</title>
+  <link rel="stylesheet" href="searchresultstyle.css">
+</head>
+<body>
+  <h2>Search Result</h2>
+
+  <div class="jobs-container">
+    <div class="job-box" data-title="website designer">
+      <h2>WEBSITE DESIGNER</h2>
+      <p>SALARY : Rs 45000</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+
+    <div class="job-box" data-title="civil engineer">
+      <h2>CIVIL ENGINEER</h2>
+      <p>SALARY : Rs 38000</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+
+    <div class="job-box" data-title="bank teller">
+      <h2>BANK TELLER</h2>
+      <p>SALARY : Rs 27000</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+  </div>
+
+  <!-- Back to Homepage Button -->
+  <button class="back-btn" onclick="goHome()">BACK TO HOMEPAGE</button>
+
+  <script>
+    // Show only the matching job
+    function showResult() {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("job");
+      const jobs = document.querySelectorAll(".job-box");
+
+      jobs.forEach(job => {
+        const title = job.getAttribute("data-title");
+        if (title.includes(query)) {
+          job.style.display = "block";
+        } else {
+          job.style.display = "none";
+        }
+      });
+    }
+
+    function goHome() {
+      window.location.href = "webtest2.html";
+    }
+
+    showResult();
+  </script>
+</body>
+</html>
